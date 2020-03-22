@@ -1,41 +1,39 @@
 const connection = require('connection');
 
-selectAll = () => {
+const orm = {
 
-    return new Promise((resolve, reject) => {
-        connection.query("SELECT * FROM burgers", (err, res) => {
+    selectAll: (table, columns, callback) => {
+
+        const queryString = "SELECT ?? FROM ??";
+        connection.query(queryString, [columns, table], (err, res) => {
             if (err) {
                 return res.status(500).end();
             }
-            return err ? reject(err) : resolve(res);
+            callback(res);
         });
-    });
-};
+    },
 
-insertOne = (query) => {
+    insertOne: (table, column, value, callback) => {
 
-    return new Promise((resolve, reject) => {
-        connection.query("INSERT INTO burgers SET burgers=?", [query], (err, res) => {
+        const queryString = "INSERT INTO ?? SET ??=?";
+        connection.query(queryString, [table, column, value], (err, res) => {
             if (err) {
                 return res.status(500).end();
             }
-            return err ? reject(err) : resolve(res);
+            callback(res);
         });
-    });
+    },
 
-};
+    updateOne = (table, column1, value, column2, id) => {
 
-updateOne = (query, id) => {
-
-    return new Promise((resolve, reject) => {
-        connection.query("UPDATE burger SET burgers=? WHERE id=?", [query, id], (err, res) => {
+        const queryString = "UPDATE ?? SET ??=? WHERE id=?";
+        connection.query(queryString, [table, column1, value, column2, id], (err, res) => {
             if (err) {
                 return res.status(500).end();
             }
-            return err ? reject(err) : resolve(res);
+            callback(res);
         });
-    });
-
+    }
 };
 
 module.exports.selectAll = selectAll;
