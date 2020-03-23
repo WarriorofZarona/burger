@@ -32,7 +32,7 @@ const orm = {
         });
     },
 
-    updateOne = (table, objColVals, condition, callback) => {
+    updateOne: (table, objColVals, condition, callback) => {
 
         let queryString = "UPDATE " + table;
 
@@ -78,7 +78,4 @@ objToSql = obj => {
     return arr.toString();
 };
 
-
-module.exports.selectAll = selectAll;
-module.exports.insertOne = insertOne;
-module.exports.updateOne = updateOne;
+module.exports = orm;
