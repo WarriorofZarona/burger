@@ -17,3 +17,14 @@ li {
 .form-group {
     margin-bottom: 5px;
 }
+
+body {
+    background-color: #ffcb68;
+}
+
+img {
+    display: block;
+    height: auto;
+    width: 15%;
+    margin: 100px auto 0;
+}

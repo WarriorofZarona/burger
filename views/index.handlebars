@@ -1,4 +1,6 @@
-<h1>Burgers!</h1>
+<img src="/img/burger.jpg" alt="burger" class="center" />
+
+<h1></h1>
 
 <h2>Burgers to be devoured!</h2>
 
@@ -7,10 +9,10 @@
     {{#unless devoured}}
 
     <li>
-        {{burger_name}}
+        Order #{{id}}: {{burger_name}}
 
         <button class="change-devoured" data-id="{{id}}" data-newdevoured="{{devoured}}">
-            {{#if devoured}}DEVOURED!{{else}}EAT IT!!{{/if}}
+            {{#unless devoured}}Devour it!!{{/unless}}
         </button>
     </li>
 
@@ -25,11 +27,7 @@
     {{#if devoured}}
 
     <li>
-        {{burger_name}}
-
-        <button class="change-devoured" data-id="{{id}}" data-newdevoured="{{devoured}}">
-            {{#if devoured}}DEVOURED!{{else}}EAT IT!!{{/if}}
-        </button>
+        Order #{{id}}: {{burger_name}}
     </li>
     {{/if}}
     {{/each}}
@@ -44,9 +42,8 @@
     </div>
 
     <div class="form-group">
-        <label for="devour">Devoured?</label><br>
-        <input type="radio" name="devoured" value="1" checked> Eat it NOW?<br>
-        <input type="radio" name="devoured" value="0"> Eat it LATER!
+        <input type="radio" name="devoured" value="1" checked> Devour later?<br>
+        <input type="radio" name="devoured" value="0"> Devour now?
     </div>
 
     <button type="submit">Add Burger</button>
