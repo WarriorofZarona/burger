@@ -7,12 +7,12 @@ const burger = {
         });
     },
     createOne: (cols, vals, callback) => {
-        orm.create("burgers", cols, vals, res => {
+        orm.createOne("burgers", cols, vals, res => {
             callback(res);
         });
     },
     updateOne: (objColVals, condition, cb) => {
-        orm.update("burgers", objColVals, condition, res => {
+        orm.updateOne("burgers", objColVals, condition, res => {
             cb(res);
         });
     }

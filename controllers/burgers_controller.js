@@ -9,6 +9,7 @@ router.get("/", (req, res) => {
         const hbsObject = {
             burgers: data
         };
+        console.log(hbsObject);
         res.render("index", hbsObject);
     });
 });
@@ -31,17 +32,19 @@ router.post("/api/burgers", (req, res) => {
 });
 
 router.put("/api/burgers/:id", (req, res) => {
+    console.log("I'M BEING UPDATED")
     const condition = "id = " + req.params.id;
 
-    burger.updateOne({
-        devoured: req.body.devoured
-    }, condition, result => {
-        if (result.changedRows == 0) {
-            return res.status(404).end();
-        } else {
-            res.status(200).end();
-        }
-    });
+    burger.updateOne(
+        {
+            devoured: req.body.devoured
+        }, condition, result => {
+            if (result.changedRows == 0) {
+                return res.status(404).end();
+            } else {
+                res.status(200).end();
+            }
+        });
 });
 
 module.exports = router;
