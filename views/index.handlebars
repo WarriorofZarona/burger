@@ -2,36 +2,39 @@
 
 <h1></h1>
 
-<h2>Burgers to be devoured!</h2>
+<h2 class="todevour">Burgers to be devoured!</h2>
+<div class="todevour">
+    <ul>
+        {{#each burgers}}
+        {{#unless devoured}}
 
-<ul>
-    {{#each burgers}}
-    {{#unless devoured}}
+        <li>
+            Order #{{id}}: {{burger_name}}
 
-    <li>
-        Order #{{id}}: {{burger_name}}
+            <button class="change-devoured" data-id="{{id}}" data-newdevoured="{{devoured}}">
+                {{#unless devoured}}Devour it!!{{/unless}}
+            </button>
+        </li>
 
-        <button class="change-devoured" data-id="{{id}}" data-newdevoured="{{devoured}}">
-            {{#unless devoured}}Devour it!!{{/unless}}
-        </button>
-    </li>
+        {{/unless}}
+        {{/each}}
+    </ul>
+</div>
 
-    {{/unless}}
-    {{/each}}
-</ul>
+<h2 class="devoured">Burgers that are devoured!</h2>
+<div class="devoured">
+    <ul>
+        {{#each burgers}}
+        {{#if devoured}}
 
-<h2>Burgers that are devoured!</h2>
+        <li>
+            Order #{{id}}: {{burger_name}}
+        </li>
+        {{/if}}
+        {{/each}}
+    </ul>
+</div>
 
-<ul>
-    {{#each burgers}}
-    {{#if devoured}}
-
-    <li>
-        Order #{{id}}: {{burger_name}}
-    </li>
-    {{/if}}
-    {{/each}}
-</ul>
 
 <h2>Add a Burger</h2>
 <form class="create-form">
