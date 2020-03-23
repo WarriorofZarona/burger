@@ -13,10 +13,18 @@ const orm = {
         });
     },
 
-    insertOne: (table, column, value, callback) => {
+    createOne: (table, columns, values, callback) => {
 
-        const queryString = "INSERT INTO ?? SET ??=?";
-        connection.query(queryString, [table, column, value], (err, res) => {
+        let queryString = "INSERT INTO " + table;
+
+        queryString += " (";
+        queryString += columns.toString();
+        queryString += ") ";
+        queryString += "VALUES (";
+        queryString += printQuestionMarks(values.length);
+        queryString += ") ";
+
+        connection.query(queryString, values, (err, res) => {
             if (err) {
                 return res.status(500).end();
             }
@@ -24,10 +32,16 @@ const orm = {
         });
     },
 
-    updateOne = (table, column1, value, column2, id) => {
+    updateOne = (table, objColVals, condition, callback) => {
 
-        const queryString = "UPDATE ?? SET ??=? WHERE id=?";
-        connection.query(queryString, [table, column1, value, column2, id], (err, res) => {
+        let queryString = "UPDATE " + table;
+
+        queryString += " SET ";
+        queryString += objToSql(objColVals);
+        queryString += " WHERE ";
+        queryString += condition;
+
+        connection.query(queryString, (err, res) => {
             if (err) {
                 return res.status(500).end();
             }
@@ -35,6 +49,35 @@ const orm = {
         });
     }
 };
+
+printQuestionMarks = num => {
+    const arr = [];
+
+    for (let i = 0; i < num; i++) {
+        arr.push("?");
+    };
+
+    return arr.toString();
+};
+
+objToSql = obj => {
+    const arr = [];
+
+    for (let key in obj) {
+        let value = obj[key];
+
+        if (Object.hasOwnProperty.call(obj, key)) {
+
+            if (typeof value === "string" && value.indexOf(" ") >= 0) {
+                value = "'" + value + "'";
+            }
+            arr.push(key + "=" + value);
+        };
+    };
+
+    return arr.toString();
+};
+
 
 module.exports.selectAll = selectAll;
 module.exports.insertOne = insertOne;
