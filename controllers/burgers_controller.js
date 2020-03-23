@@ -13,6 +13,13 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/api/burgers", (req, res) => {
+
+    burger.selectAll(data =>
+        res.json(data));
+
+})
+
 router.post("/api/burgers", (req, res) => {
     burger.createOne([
         "burger_name", "devoured"
