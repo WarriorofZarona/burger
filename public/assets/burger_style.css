@@ -23,8 +23,10 @@ body {
 }
 
 img {
+    position: relative;
+    top: 30%;
     display: block;
     height: auto;
-    width: 15%;
+    width: 200px;
     margin: 100px auto 0;
 }
