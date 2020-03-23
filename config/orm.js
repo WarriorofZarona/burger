@@ -1,11 +1,11 @@
-const connection = require('connection');
+const connection = require('./connection.js');
 
 const orm = {
 
-    selectAll: (table, columns, callback) => {
+    selectAll: (table, callback) => {
 
-        const queryString = "SELECT ?? FROM ??";
-        connection.query(queryString, [columns, table], (err, res) => {
+        const queryString = "SELECT * FROM ??";
+        connection.query(queryString, [table], (err, res) => {
             if (err) {
                 return res.status(500).end();
             }
