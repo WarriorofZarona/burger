@@ -1,23 +1,21 @@
 const orm = require('../config/orm.js');
 
-const cat = {
-    selectAll: function (callback) {
-        orm.selectAll("cats", "*" function (res) {
+const burger = {
+    selectAll: callback => {
+        orm.selectAll("burgers", res => {
             callback(res);
         });
     },
-    // The variables cols and vals are arrays.
-    insertOne: function (col, vals, callback) {
-        orm.create("cats", cols, vals, function (res) {
-            cb(res);
+    createOne: (cols, vals, callback) => {
+        orm.create("burgers", cols, vals, res => {
+            callback(res);
         });
     },
-    updateOne: function (objColVals, condition, cb) {
-        orm.update("cats", objColVals, condition, function (res) {
+    updateOne: (objColVals, condition, cb) => {
+        orm.update("burgers", objColVals, condition, res => {
             cb(res);
         });
     }
 };
-
 
 module.exports = burger;
