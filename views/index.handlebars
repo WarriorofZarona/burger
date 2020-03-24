@@ -42,23 +42,22 @@
     </div>
 </div>
 
+<div class="container-fluid">
+    <form class="create-form">
 
-<h2>Add a Burger</h2>
-<form class="create-form">
+        <div class="form-group mx-auto">
+            <input type="text" class="form-control form-control-l" id="bg" name="burger_name"
+                placeholder="Enter a burger!">
+        </div>
 
-    <div class="form-group">
-        <label for="bg">Burger Name:</label>
-        <input type="text" id="bg" name="burger_name">
-    </div>
+        <div class="form-group mx-auto radio">
+            <input type="radio" name="devoured" value="0" checked> Devour later?
+            <input type="radio" name="devoured" value="1"> Devour now?
+        </div>
 
-    <div class="form-group">
-        <input type="radio" name="devoured" value="0" checked> Devour later?<br>
-        <input type="radio" name="devoured" value="1"> Devour now?
-    </div>
-
-    <button type="submit btn btn-primary">Add Burger</button>
-</form>
-
+        <button type="submit" class="submit btn btn-danger">Add Burger</button>
+    </form>
+</div>
 <script>
     $(".change-devoured").on("click", function (event) {
         console.log("IS THIS BEING CLICKED?")
