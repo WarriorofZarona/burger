@@ -33,7 +33,7 @@
 
                     <li class="yum">
                         Order #{{id}}: {{burger_name}}
-                        <button class="delete-burger btn btn-danger" data-id="{{this.id}}">DELETE!</button>
+                        <button class="delete-burger btn btn-danger" data-id="{{this.id}}">Delete it!</button>
                     </li>
                     </li>
                     {{/if}}
@@ -78,7 +78,6 @@
             data: newDevouredState
         }).then(
             () => {
-                console.log("changed devoured to", newDevoured);
                 location.reload();
             }
         )
@@ -97,7 +96,6 @@
             data: newBurger
         }).then(
             () => {
-                console.log("created new burger");
                 location.reload();
             });
     });
@@ -110,7 +108,6 @@
             type: "DELETE"
         }).then(
             () => {
-                console.log("deleted burger", id);
                 location.reload();
             }
         );

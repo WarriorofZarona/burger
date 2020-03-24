@@ -9,7 +9,6 @@ router.get("/", (req, res) => {
         const hbsObject = {
             burgers: data
         };
-        console.log(hbsObject);
         res.render("index", hbsObject);
     });
 });
@@ -32,7 +31,7 @@ router.post("/api/burgers", (req, res) => {
 });
 
 router.put("/api/burgers/:id", (req, res) => {
-    console.log("I'M BEING UPDATED")
+
     const condition = "id = " + req.params.id;
 
     burger.updateOne(

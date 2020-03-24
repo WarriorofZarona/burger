@@ -53,8 +53,6 @@ const orm = {
         queryString += printQuestionMarks(values.length);
         queryString += ") ";
 
-        console.log(queryString);
-
         connection.query(queryString, values, (err, res) => {
             if (err) {
                 return res.status(500).end();
@@ -71,8 +69,6 @@ const orm = {
         queryString += objToSql(objColVals);
         queryString += " WHERE ";
         queryString += condition;
-
-        console.log(queryString);
 
         connection.query(queryString, (err, res) => {
             if (err) {
