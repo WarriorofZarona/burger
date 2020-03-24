@@ -3,37 +3,43 @@
 
 <h1 class="title relative">Eat-Da-Burger!</h1>
 
-<h2 class="todevour">Burgers to be devoured!</h2>
-<div class="todevour">
-    <ul>
-        {{#each burgers}}
-        {{#unless devoured}}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6">
+            <div class="todevour">
+                <ul>
+                    {{#each burgers}}
+                    {{#unless devoured}}
 
-        <li>
-            Order #{{id}}: {{burger_name}}
+                    <li class="devourchoice">
+                        Order #{{id}}: {{burger_name}}
 
-            <button class="change-devoured" data-id="{{id}}" data-newdevoured="{{devoured}}">
-                {{#unless devoured}}Devour it!!{{/unless}}
-            </button>
-        </li>
+                        <button class="change-devoured btn btn-danger" data-id="{{id}}" data-newdevoured="{{devoured}}">
+                            {{#unless devoured}}Devour it!{{/unless}}
+                        </button>
+                    </li>
 
-        {{/unless}}
-        {{/each}}
-    </ul>
-</div>
+                    {{/unless}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
 
-<h2 class="devoured">Burgers that are devoured!</h2>
-<div class="devoured">
-    <ul>
-        {{#each burgers}}
-        {{#if devoured}}
+        <div class="col-6">
+            <div class="devoured text-secondary">
+                <ul>
+                    {{#each burgers}}
+                    {{#if devoured}}
 
-        <li>
-            Order #{{id}}: {{burger_name}}
-        </li>
-        {{/if}}
-        {{/each}}
-    </ul>
+                    <li class="yum">
+                        Order #{{id}}: {{burger_name}}
+                    </li>
+                    {{/if}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 
 
@@ -46,11 +52,11 @@
     </div>
 
     <div class="form-group">
-        <input type="radio" name="devoured" value="1" checked> Devour later?<br>
-        <input type="radio" name="devoured" value="0"> Devour now?
+        <input type="radio" name="devoured" value="0" checked> Devour later?<br>
+        <input type="radio" name="devoured" value="1"> Devour now?
     </div>
 
-    <button type="submit">Add Burger</button>
+    <button type="submit btn btn-primary">Add Burger</button>
 </form>
 
 <script>

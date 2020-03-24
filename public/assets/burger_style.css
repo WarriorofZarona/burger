@@ -1,7 +1,6 @@
 li {
     padding: 5px;
     margin: 5px;
-    background: #be720f;
 }
 
 .label {
@@ -35,4 +34,9 @@ img {
     margin: 10px auto 0;
     color: red;
     text-align: center;
+}
+
+.devourchoice, .yum {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: x-large;
 }
