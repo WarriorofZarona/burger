@@ -80,7 +80,23 @@ const orm = {
             }
             callback(res);
         });
+    },
+
+    delete: (table, condition, callback) => {
+        let queryString = "DELETE FROM " + table;
+
+        queryString += " WHERE ";
+        queryString += condition;
+
+        connection.query(queryString, (err, result) => {
+            if (err) {
+                return res.status(500).end();
+            }
+
+            callback(result);
+        });
     }
 };
+
 
 module.exports = orm;

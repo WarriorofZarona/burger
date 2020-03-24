@@ -33,6 +33,8 @@
 
                     <li class="yum">
                         Order #{{id}}: {{burger_name}}
+                        <button class="delete-burger btn btn-danger" data-id="{{this.id}}">DELETE!</button>
+                    </li>
                     </li>
                     {{/if}}
                     {{/each}}
@@ -58,11 +60,13 @@
         <button type="submit" class="submit btn btn-danger">Add Burger</button>
     </form>
 </div>
+
+
 <script>
     $(".change-devoured").on("click", function (event) {
-        console.log("IS THIS BEING CLICKED?")
+
         let id = $(this).data("id");
-        console.log(id);
+
         let newDevoured = 1;
 
         const newDevouredState = {
@@ -96,6 +100,20 @@
                 console.log("created new burger");
                 location.reload();
             });
+    });
+
+    $(".delete-burger").on("click", function (event) {
+        let id = $(this).data("id");
+
+        // Send the DELETE request.
+        $.ajax("/api/burgers/" + id, {
+            type: "DELETE"
+        }).then(
+            () => {
+                console.log("deleted burger", id);
+                location.reload();
+            }
+        );
     });
 
 

@@ -15,6 +15,11 @@ const burger = {
         orm.updateOne("burgers", objColVals, condition, res => {
             cb(res);
         });
+    },
+    delete: function (condition, callback) {
+        orm.delete("burgers", condition, res => {
+            callback(res);
+        });
     }
 };
 
