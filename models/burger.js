@@ -11,9 +11,9 @@ const burger = {
             callback(res);
         });
     },
-    updateOne: (objColVals, condition, cb) => {
+    updateOne: (objColVals, condition, callback) => {
         orm.updateOne("burgers", objColVals, condition, res => {
-            cb(res);
+            callback(res);
         });
     },
     delete: function (condition, callback) {
