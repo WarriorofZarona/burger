@@ -24,9 +24,18 @@ body {
 
 img {
     position: relative;
-    top: 30%;
+    top: 75px;
     display: block;
     height: auto;
     width: 200px;
     margin: 100px auto 0;
+}
+
+.title {
+    position: relative;
+    top: 75px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 10px auto 0;
+    color: red;
+    text-align: center;
 }
